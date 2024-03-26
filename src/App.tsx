@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import List from "./pages/List";
+
 import CreateProduct from "./pages/CreateProduct";
+import List from "./pages/ListProducts";
 function App() {
   return (
     <>

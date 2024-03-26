@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IProduct } from "../interfaces/IProduct";
-import ProductService from "../services/ProductService";
 import { InformationCircleIcon } from "@heroicons/react/solid";
 import StatusCard from "../components/StatusCard";
+import ProductService from "../services/ProductService";
 
 enum SortingMode {
 	ID,
@@ -33,6 +33,8 @@ function List() {
 		}
 		setProducts(temp);
 	}
+
+	const formatToBRL = (num: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(num);
 
 	const fetchProducts = async () => {
 		setLoading(true);
@@ -166,7 +168,7 @@ function List() {
 																	</div>
 																</div>}
 															</td>
-															<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">R$ {p.price}</td>
+															<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatToBRL(p.price)}</td>
 															<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 																<Link to={"/products/new?id=".concat(p.id!.toString())} className="mx-5 text-indigo-600 hover:text-indigo-900">
 																	Editar
